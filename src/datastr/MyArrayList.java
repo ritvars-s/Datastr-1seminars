@@ -51,5 +51,25 @@ public class MyArrayList {
 		//return (how_many_elements == size) ? true : false;
 		
 	}
+	private void resize() {
+		int newSize;
+		if (how_many_elements < 200) {
+			newSize = size * 2;
+			
+		}
+		else {
+			newSize = (int)(size * 1.5);
+		}
+		
+		char[] newList = new char[newSize];
+ 		
+		for(int i = 0; i < how_many_elements; i++) {
+			newList[i] = list[i];
+		}
+ 		
+ 		list = newList;
+ 		size = newSize;
+		System.gc();
+	}
 	
 }
