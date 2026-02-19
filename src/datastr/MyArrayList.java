@@ -8,7 +8,16 @@ public class MyArrayList {
 	private int size = DEFAULT_SIZE;
 	
 	//konstruktori
+	public MyArrayList() {
+		list = new char[size];
+	}
 	
+	public MyArrayList(int input_size) {
+		if (input_size > 0 && input_size < 1000000) {
+			size = input_size;
+		}
+		list = new char[size];
+	}
 	
 	//funkcijas
 		
