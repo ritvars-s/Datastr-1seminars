@@ -11,7 +11,7 @@ public class MyArrayList<Ttype> {
 	
 	//konstruktori
 	public MyArrayList() {
-		list = new char[size];
+		list = (Ttype[]) new Object[size];
 	}
 	
 	public MyArrayList(int inputSize) {
@@ -19,7 +19,7 @@ public class MyArrayList<Ttype> {
 			size = inputSize;
 		}
 		
-		list = new char[size];
+		list = (Ttype[]) new Object[size];
 		
 	}
 	
@@ -63,7 +63,7 @@ public class MyArrayList<Ttype> {
 	//resize
 	private void resize() {
 		int newSize = (howManyElements < 200) ? (size * 2) : (int)(size * 1.5);
-		char[] newList = new char[newSize];
+		Ttype[] newList = (Ttype[]) new Object[newSize];
 		
 		for(int i = 0; i < howManyElements; i++) {
 			newList[i] = list[i];
@@ -75,7 +75,7 @@ public class MyArrayList<Ttype> {
 		
 	}
 
-	public void add(char element) {
+	public void add(Ttype element) {
 		if(isFull()) {
 			resize();
 		}
@@ -84,7 +84,7 @@ public class MyArrayList<Ttype> {
 		//howManyElements++; <- palielināšanu veikt cita koda rindiņā
 	}
 	
-	public void add(char element, int index) throws IllegalArgumentException  {
+	public void add(Ttype element, int index) throws IllegalArgumentException  {
 		if(index < 0){
 			throw new IllegalArgumentException("Nav iespējams pievienot elementu, jo indekss ir negatīvs");
 		}
@@ -160,7 +160,7 @@ public class MyArrayList<Ttype> {
 		
 		ArrayList<Integer> indexArrayList = new ArrayList<Integer>();
 		for(int i = 0; i < howManyElements; i++) {
-			if(list[i].equals(element)) { //referencu datu tipiem jaizmanto equals
+			if(list[i].equals(element)) {//referencu datu tipiem jjāizmanto equals salīdzinašanā
 				indexArrayList.add(i);
 			}
 		}
@@ -184,7 +184,7 @@ public class MyArrayList<Ttype> {
 			howManyNextElements--;
 		}
 		
-		Ttype[] nextElements = (Ttype[])new Object[howManyNextElements];
+		Ttype[] nextElements = (Ttype[]) new Object[howManyNextElements];
 		int indexForNextElementArray = 0;
 		
 		for(int i = 0; i < howManyNextElements; i++) {
@@ -205,7 +205,7 @@ public class MyArrayList<Ttype> {
 		for(int i = 0; i < howManyElements; i++) {
 			for(int j = 0; j < howManyElements; j++) {
 				//if(list[i] > list[j]) {
-				if ( ((Comparable)list[i]).compareTo(list[j]) > 0) {
+				if( ((Comparable)list[i]).compareTo(list[j]) > 0) {
 					Ttype temp = list[i];
 					list[i] = list[j];
 					list[j] = temp;
@@ -234,7 +234,7 @@ public class MyArrayList<Ttype> {
 		System.gc();
 		howManyElements = 0;
 		size = DEFAULT_SIZE;
-		list = (Ttype[])new Object[size];
+		list = (Ttype[]) new Object[size];
 		
 	}
 	

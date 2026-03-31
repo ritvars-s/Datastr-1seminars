@@ -3,6 +3,7 @@ package service;
 import java.util.Arrays;
 
 import datastr.MyArrayList;
+import model.Student;
 
 public class MainService {
 
@@ -35,7 +36,34 @@ public class MainService {
 		catch (Exception e) {
 			System.out.println(e);
 		}
-
+		MyArrayList<Student> allStudents = new MyArrayList<Student>();
+		Student s1 = new Student("Janis", "Berzins", "123456-12345");
+		Student s2 = new Student("Juris", "Sesks", "123455-12345");
+		Student s3 = new Student("Levis", "Ozols", "123466-12345");
+		try {
+				allStudents.add(s1);
+				allStudents.add(s2);
+				allStudents.add(s3, 0);
+				allStudents.print();
+				System.out.println(allStudents.search(s3)); //<- kura indeksa glabajas Levis
+				System.out.println(Arrays.toString(allStudents.getNextElements(s3))); //pec levis nakosais elements
+				System.out.println("========sort===========");
+				allStudents.sort();
+				allStudents.print();
+				System.out.println("========remove===========");
+				allStudents.remove(0);
+				allStudents.print();
+				System.out.println("========makeEmpty===========");
+				allStudents.makeEmpty();
+				//allStudents.print();
+				allStudents.add(s1);
+				allStudents.print();
+		}
+		catch (Exception e){
+			System.out.println(e.getMessage());
+		}
+		
+		
 	}
 
 }
